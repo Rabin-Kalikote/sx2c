@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+
+html,body{
+  min-width: 320px;
+}
+a{text-decoration: none!important;}
+
+.btn-sx2c{
+  color: #fff!important;
+  background: #dc4767!important;
+  &:hover{background: #c12547!important;}
+}
+
+@import "bootstrap";

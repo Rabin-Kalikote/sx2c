@@ -3,4 +3,6 @@ class Article < ApplicationRecord
 
   has_one_attached :image
   has_one_attached :bodypdf
+
+  has_many :comments
 end

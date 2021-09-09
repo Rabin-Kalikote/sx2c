@@ -1,0 +1,3 @@
+= simple_form_for([@article, @article.comments.build]) do |f|
+  = f.input :content, :placeholder => "Comment", :type=> "text"
+  = f.button :submit, value: "Submit"

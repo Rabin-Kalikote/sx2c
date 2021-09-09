@@ -1,3 +1,259 @@
-// Place all the styles related to the articles controller here.
+// Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
+
+// css for navbar
+.sx2c-navbar{
+  width: 100%;
+  position: fixed;
+  background: #fff;
+  z-index: 1020;
+  box-shadow: 0 0.125rem 0.1875rem -0.125rem rgba(0,0,0,.2);
+  .container{
+    margin: .4rem auto;
+    position: relative;
+    .col-2 {
+      a{
+        font-size: 1.2rem;
+        color: #4d4d4d;
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        line-height: 2.7;
+      }
+      a.profile{
+        text-align: right;
+      }
+      @media (max-width: 575.98px) {
+        a{
+          line-height: 2.4;
+        }
+      }
+    }
+    .col-8{
+      padding: 0;
+      justify-content: center;
+      .sx2c-brand{
+        font-family: 'Roboto Slab';
+        font-size: 2.1rem;
+        width: 100%;
+        color: #333;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        span{color: #dc4767;}
+      }
+      @media (max-width: 575.98px) {
+        .sx2c-brand{
+          font-size: 1.6rem;
+        }
+      }
+    }
+    .form{
+      position: absolute;
+      top:0;left:0;
+      padding: .4rem auto;
+      background: #fff;
+      height: 100%;
+    }
+    @media (min-width: 576px) {
+      .form{
+        top:.4rem;
+      }
+    }
+  }
+}
+
+// css for banner
+.sx2c-banner{
+  z-index: 2!important;
+  position: relative;
+  width: 100%;
+  min-height: 17rem;
+  padding-top: 2rem;
+  background-image: linear-gradient(#f2f2f2, #fff);
+  .quote{
+    padding: 7rem 15px 3rem;
+    h2{
+      width: 100%;
+      text-align: center;
+      color: #4d4d4d;
+      font-size: 2.1rem;
+      font-family: 'Roboto Slab';
+    }
+    p.sub{
+      width: 100%;
+      text-align: center;
+      color: #4d4d4d;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.sx2c-categories{
+  .nav-link{
+    font-size: 1.2rem;
+    font-family: 'Roboto Slab';
+    color: #4d4d4d;
+    text-decoration: none;
+    background: #f1fbf9;
+    border-radius: .1rem;
+    margin: 0 .4rem;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    &:hover{color: #dc4767;}
+  }
+  .nav-link.active{color: #dc4767;}
+}
+
+.container{
+  h2{
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: center;
+    margin: 3rem 0;
+  }
+  .col-lg-3{
+    .card{
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      .card-img-top{
+        color: #b3b3b3;
+        height: 11rem;
+        text-align: center;
+        font-family: 'Roboto Slab';
+      }
+    }
+    h5{
+      margin: 1rem 0 2rem;
+      a{
+        font-size: 1.1rem;
+        color: #4d4d4d;
+        font-family: 'Roboto Slab';
+        &:hover{color: #dc4767;}
+      }
+    }
+  }
+  .btn-create{
+    margin-top: 4rem;
+    color: #fff;
+    background: #dc4767;
+    &:hover{color: #fff;background: #c12547;}
+  }
+}
+
+// css for footer
+.sx2c-footer{
+  margin-top: 4rem;
+  .display-6{
+    font-family: 'Roboto Slab';
+  }
+  .links{
+    a{
+      text-decoration: none;
+      color:#d9d9d9;
+    }
+  }
+}
+
+
+.sx2c-article{
+  padding-top: 6rem;
+  .col-lg-9{
+    h1{
+      font-size: 1.7rem;
+      color: #4d4d4d;
+      font-family: 'Roboto Slab';
+      margin-bottom: 1rem;
+    }
+    .article-pdf{
+      margin: 2rem 0;
+    }
+    h3{
+      font-size: 1.4rem;
+      color: #4d4d4d;
+      font-family: 'Roboto Slab';
+      margin-bottom: 1.4rem;
+    }
+    .comment-form{
+      #comment_content{
+        width: 100%;
+      }
+    }
+    .threads{
+      padding: 2rem 0;
+      .thread-item{
+        padding: 1rem 0;
+        p.user{
+          font-size: 1rem;
+          color: #dc4767;
+          font-family: 'Roboto Slab';
+        }
+        p{
+          font-size: 1rem;
+          color: #4d4d4d;
+          font-family: 'Roboto Slab';
+        }
+      }
+    }
+  }
+  .col-lg-3{
+    padding-top: 4rem;
+    h3{
+      font-size: 1.3rem;
+      color: #4d4d4d;
+      margin-bottom: 2rem;
+      font-family: 'Roboto Slab';
+    }
+  }
+}
+
+#search{
+  padding-top: 4rem;
+  h2{
+    font-size: 1.7rem;
+    color: #4d4d4d;
+    margin-bottom: 2rem;
+    font-family: 'Roboto Slab';
+  }
+  p{
+    margin-top: 5rem;
+    font-size: 1rem;
+    color: #4d4d4d;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-family: 'Roboto Slab';
+  }
+}
+
+#add-article,
+#edit-article{
+  padding-top: 7rem;
+  h1{
+    font-size: 1.7rem;
+    color: #4d4d4d;
+    margin-bottom: 2rem;
+    font-family: 'Roboto Slab';
+  }
+  label{
+    font-size: 1rem;
+    color: #4d4d4d;
+    margin-bottom:.7rem;
+  }
+}
+
+#sign-in,
+#sign-up,
+#settings{
+  padding-top: 4rem;
+  h2{
+    font-size: 1.7rem;
+    color: #4d4d4d;
+    margin-bottom: 2rem;
+    font-family: 'Roboto Slab';
+  }
+  label{
+    font-size: 1rem;
+    color: #4d4d4d;
+    margin-bottom:.7rem;
+  }
+}

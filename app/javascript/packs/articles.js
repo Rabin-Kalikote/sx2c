@@ -40,7 +40,6 @@ $( document ).on('turbolinks:load', function() {
     e.preventDefault();
     $( ".sx2c-search" ).toggleClass("d-none");
   });
-  alert($('.article-pdf').data('url'));
   // render pdf
   renderPdf($('.article-pdf').data('url'));
 });

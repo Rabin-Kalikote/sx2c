@@ -3,6 +3,11 @@
 
 .article-pdf{"data-url"=>url_for(@article.bodypdf)}
 
+= render 'comments/form'
+
+- @article.comments.each do |comment|
+  %p= comment.content
+
 = link_to "back", root_path
 = link_to 'Edit', edit_article_path
 = link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure"}
