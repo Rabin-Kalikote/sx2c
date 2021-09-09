@@ -1,6 +1,8 @@
 %h2= @article.title
 %p= @article.category.humanize
 
+.article-pdf{"data-url"=>url_for(@article.bodypdf)}
+
 = link_to "back", root_path
 = link_to 'Edit', edit_article_path
 = link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure"}
