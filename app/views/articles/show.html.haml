@@ -1,0 +1,6 @@
+%h2= @article.title
+%p= @article.category.humanize
+
+= link_to "back", root_path
+= link_to 'Edit', edit_article_path
+= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure"}

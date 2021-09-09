@@ -1,0 +1,7 @@
+%h1 This is SX2C
+
+- @articles.each do |article|
+  = link_to article do
+    %h2= article.title
+
+= link_to 'Create Article', new_article_path
