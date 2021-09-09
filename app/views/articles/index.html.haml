@@ -2,6 +2,7 @@
 
 - @articles.each do |article|
   = link_to article do
+    = image_tag article.image.variant(resize: "500x300!") if article.image.attached?
     %h2= article.title
 
 = link_to 'Create Article', new_article_path

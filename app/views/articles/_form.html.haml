@@ -1,4 +1,8 @@
 = simple_form_for @article do |f|
+  = image_tag @article.image.variant(resize:"200x120!") if @article.image.attached?
+  = f.input :image, :input_html => {:accept => 'image/*'}
+  = f.input :bodypdf, :input_html => {:accept => 'document/pdf'}
+  = "Current: #{@article.bodypdf.filename.to_s}" if @article.bodypdf.attached?
   = f.input :title
   = f.select :category, options_for_select(Article.categories.map {|key, value| [key.humanize, key]})
 
