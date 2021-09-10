@@ -5,4 +5,5 @@ class Article < ApplicationRecord
   has_one_attached :bodypdf
 
   has_many :comments
+  belongs_to :user
 end

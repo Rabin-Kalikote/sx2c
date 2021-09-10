@@ -1,13 +1,34 @@
-%h2= @article.title
-%p= @article.category.humanize
 
-.article-pdf{"data-url"=>url_for(@article.bodypdf)}
+.sx2c-article
+  .container
+    .row
+      .col-lg-9.col-md-12
+        %nav{"aria-label" => "breadcrumb", :style => "--bs-breadcrumb-divider: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E\");"}
+          %ol.breadcrumb
+            %li.breadcrumb-item
+              = link_to "Home", root_path
+            %li.breadcrumb-item.active{"aria-current" => "page"}= @article.category.humanize
 
-= render 'comments/form'
+        %h1= @article.title
+        - if @article.user == current_user
+          .btn-group{"aria-label" => "Basic outlined example", :role => "group"}
+            = link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-primary"
+            = link_to 'Edit', article_path(@article), method: :delete, class: "btn btn-outline-primary"
+        .article-pdf{"data-url"=>url_for(@article.bodypdf)}
 
-- @article.comments.each do |comment|
-  %p= comment.content
+        %h3 Discussions
+        .comment-form
+          = render "comments/form"
 
-= link_to "back", root_path
-= link_to 'Edit', edit_article_path
-= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure"}
+        .threads
+          - @comments.each do |comment|
+            .thread-item
+              %p.user #{comment.user.name} said #{time_ago_in_words(comment.created_at)} ago
+              %p= comment.content
+
+      .col-lg-3.col-md-12
+        %h3 Related Articles
+        %ul.list-group
+          - @more_articles.each do |article|
+            %li.list-group-item
+              = link_to article.title, article

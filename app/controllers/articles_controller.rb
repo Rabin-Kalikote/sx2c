@@ -12,7 +12,8 @@ class ArticlesController < ApplicationController
   end
 
   def show
-
+    @comments = Comment.where(:article_id=>@article).order("created_at DESC")
+    @more_articles = Article.where(:category=>@article.category).where.not(:id=>@article.id).order("created_at DESC")
   end
 
   def search
