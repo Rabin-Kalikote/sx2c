@@ -13,7 +13,7 @@
         - if @article.user == current_user
           .btn-group{"aria-label" => "Basic outlined example", :role => "group"}
             = link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-primary"
-            = link_to 'Edit', article_path(@article), method: :delete, class: "btn btn-outline-primary"
+            = link_to 'Delete', article_path(@article), method: :delete, class: "btn btn-outline-primary"
         .article-pdf{"data-url"=>url_for(@article.bodypdf)}
 
         %h3 Discussions
