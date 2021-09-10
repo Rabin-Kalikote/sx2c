@@ -1,0 +1,31 @@
+#settings
+  .container
+    .row
+      .col-lg-8.offset-lg-2
+        %h2 Edit #{resource_name.to_s.humanize}
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+          .card
+            .card-body
+              .mb-3
+                = f.error_notification
+                .form-inputs
+                  .mb-3
+                    = f.input :email, required: true, autofocus: true, :input_html=>{class: "form-control"}
+                  .mb-3
+                    = f.input :name, required: true, :input_html=>{class: "form-control"}
+                  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                    %p
+                      Currently waiting confirmation for: #{resource.unconfirmed_email}
+                  .mb-3
+                    = f.input :password, hint: "leave it blank if you don't want to change it", required: false, input_html: { autocomplete: "new-password", class: "form-control" }
+                  .mb-3
+                    = f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password", class: "form-control" }
+                  .mb-3
+                    = f.input :current_password, hint: "we need your current password to confirm your changes", required: true, input_html: { autocomplete: "current-password", class: "form-control" }
+                .form-actions
+                  = f.button :submit, "Update", class: "btn btn-sx2c mb-2"
+            .card-footer
+              %h3 Cancel my account
+              %p
+                Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
+              = link_to "Log out", destroy_user_session_path, :method => :delete, class: "btn btn-secondary mb-2"
