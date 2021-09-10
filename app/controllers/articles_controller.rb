@@ -3,7 +3,12 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all.order("created_at DESC")
+    params[:category] ? @category = params[:category] : @category = "latest"
+    if @category == 'latest'
+      @articles = Article.all.order("created_at DESC")
+    else
+      @articles = Article.where(:category=>@category).order("created_at DESC")
+    end
   end
 
   def show

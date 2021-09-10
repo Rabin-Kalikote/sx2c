@@ -1,8 +1,28 @@
-%h1 This is SX2C
+%main
+  .sx2c-banner
+    .quote
+      %h2 Preparation is Key to Success!
+      %p.sub If you are failing to prepare, then you are preparing to fail.
 
-- @articles.each do |article|
-  = link_to article do
-    = image_tag article.image.variant(resize: "500x300!") if article.image.attached?
-    %h2= article.title
+%ul.nav.justify-content-center.mb-5.sx2c-categories
+  %li.nav-item
+    = link_to 'Latest', articles_path(:category=>'latest'), class: "nav-link #{'active' if @category == 'latest'}"
+  - Article.categories.keys.each do |key|
+    %li.nav-item
+      = link_to key.humanize, articles_path(:category=>key), class: "nav-link #{'active' if @category == key}"
 
-= link_to 'Create Article', new_article_path
+.container
+  .row
+    - @articles.each do |article|
+      .col-md-4.col-lg-3
+        .card
+          =link_to article do
+            - if article.image.attached?
+              = image_tag article.image.variant(resize:"260x150!"), class: "image-card-top"
+            - else
+              .image-card-top Thumbnail
+        %h5.title= link_to article.title, article
+
+    .d-grid.gap-2.d-sm-flex.justify-content-center
+      - if user_signed_in?
+        = link_to 'Create Article', new_article_path, class: "btn btn-create btn-lg px-4"
