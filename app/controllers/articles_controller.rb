@@ -17,7 +17,8 @@ class ArticlesController < ApplicationController
   end
 
   def search
-
+    @query = params[:query]
+    @articles = Article.where("title LIKE ?", "%#{@query}%")
   end
 
   def new

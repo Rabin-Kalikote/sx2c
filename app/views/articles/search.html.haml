@@ -1,0 +1,18 @@
+#search
+  .container
+    .row
+      %h2 Search results for '#{@query}'
+      - if @articles.present?
+        - @articles.each do |article|
+          .col-md-4.col-lg-3
+            .card
+              =link_to article do
+                - if article.image.attached?
+                  = image_tag article.image.variant(resize:"260x150!"), class: "image-card-top"
+                - else
+                  .image-card-top Thumbnail
+            %h5.title= link_to article.title, article
+      - else
+        %p
+          %i.fas.fa-info-circle
+          No articles found.
