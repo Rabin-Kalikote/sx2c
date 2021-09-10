@@ -1,0 +1,30 @@
+%nav.sx2c-navbar
+  .container
+    .row
+      .col-2
+        %a.toggle-search{:href => "#"}
+          %i.fas.fa-search
+          %span.d-none.d-md-inline Search
+      .col-8
+        = link_to root_path, class: 'sx2c-brand' do
+          %span SXC
+          Counselling
+      .col-2
+        - if user_signed_in?
+          = link_to edit_user_registration_path, class: 'profile' do
+            %span.d-none.d-md-inline Profile
+            %i.fas.fa-user
+        - else
+          = link_to new_user_session_path, class: 'profile' do
+            %span.d-none.d-md-inline Sign In
+            %i.fas.fa-user
+
+      .form.sx2c-search.d-none
+        %form.d-flex{:action=>'/search'}
+          %a.btn.btn-outline-danger.toggle-search
+            %i.fas.fa-times.d-inline.d-md-none
+            %span.d-none.d-md-inline Close
+          %input.form-control.mx-2{"aria-label"=>"Search", :placeholder=>"Search Articles",:name=>'query', :type=>'search'}
+          %button.btn.btn-success.toggle-search{:type=>'submit'}
+            %i.fas.fa-search.d-inline.d-md-none
+            %span.d-none.d-md-inline Search
